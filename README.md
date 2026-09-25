@@ -1,46 +1,122 @@
-# Getting Started with Create React App
+# AI Background Remover
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A polished React application for removing backgrounds from uploaded images using a backend AI service. The app lets users upload an image, adjust output quality, run the background-removal process, preview the result, and download the processed image.
+
+## Overview
+
+This project is a lightweight frontend built with React and TypeScript. It connects to a local backend API and provides a simple workflow for image background removal without requiring a complex UI.
+
+## Features
+
+- Drag-and-drop image upload
+- Select an image from the local device
+- Health check to verify backend connectivity
+- Background removal request to the AI processing API
+- Adjustable output quality/size slider
+- Original and processed image preview
+- Download the cleaned image as a PNG
+- Clear error messages for invalid input or failed requests
+
+## Tech Stack
+
+- React
+- TypeScript
+- Create React App
+- Fetch API
+
+## How It Works
+
+1. The user uploads or drops an image in the upload area.
+2. The image is previewed in the app.
+3. The user sets the desired output quality.
+4. The app sends the file to the backend endpoint `/remove-bg`.
+5. The processed image is displayed and can be downloaded.
+
+## Project Structure
+
+- `src/App.tsx` — main UI and API logic
+- `src/App.css` — styling and layout
+- `src/index.tsx` — app bootstrap
+- `public/` — static assets
+
+## Prerequisites
+
+Before running the app, make sure you have:
+
+- Node.js and npm installed
+- A backend service running locally on port 5000
+
+The frontend includes a proxy in `package.json`:
+
+```json
+"proxy": "http://localhost:5000"
+```
+
+## Required Backend Endpoints
+
+The app expects these endpoints:
+
+- `GET /health` — verifies the API is available
+- `POST /remove-bg` — accepts an uploaded image and returns the processed output
+
+## Getting Started
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Start the backend service on port 5000.
+
+3. Run the frontend:
+
+```bash
+npm start
+```
+
+4. Open the app in the browser:
+
+```text
+http://localhost:3000
+```
+
+## Usage
+
+1. Click the upload area or drag an image into it.
+2. Adjust the quality slider if needed.
+3. Click “Remove Background”.
+4. Review the processed image.
+5. Download the final result.
 
 ## Available Scripts
 
-In the project directory, you can run:
+```bash
+npm start
+```
+Runs the app in development mode.
 
-### `npm start`
+```bash
+npm test
+```
+Runs the test watcher.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+npm run build
+```
+Creates a production build in the `build` folder.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+npm run eject
+```
+Ejects the CRA configuration. Use with caution.
 
-### `npm test`
+## Notes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Only valid image files are accepted.
+- If the backend is unavailable, the app shows a connection error.
+- Downloaded output is named `bg-removed.png`.
 
-### `npm run build`
+## License
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project is intended for local development and experimentation unless a separate license is added.
